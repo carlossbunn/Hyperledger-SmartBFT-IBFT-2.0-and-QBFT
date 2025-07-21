@@ -1,0 +1,36 @@
+Os Fabric CA (Certificate Authorities) são responsáveis pela emissão e gestão de certificados digitais da rede.
+Eles geram as identidades (MSP e TLS) 
+docker-compose -f docker-compose-ca.yaml up -d
+Isso irá subir 3 containers de CA
+
+Com os CAs ativos, registramos e emitimos os certificados para:
+    Orderers (4 nós), Peers da Org1 e Org2, Admins das organizações
+chmod +x setup-fabric-ca.sh
+./setup-fabric-ca.sh
+
+Parte Configuração Rede BFT:
+  Criação do bloco genêsis e configuração do arquivo configtx.yaml
+  e definições do consenso
+chmod +x setup-bft-config.sh
+./setup-bft-config.sh
+
+Inicialização dos Peers e Orderers
+criação dos conteners da rede (Necessãrio docker V2):
+  chmod +x setup-complete-network.sh
+./setup-complete-network.sh
+
+Parte Final ingressar os ordererse Peers ao Chennel:
+Orders fazem join via osnadmin
+Peers fazem joinv como peer channel join
+
+chmod +x join-network.sh
+./join-network.sh
+
+Deploy e exmplo de asset-transfer-basic para o Caliper:
+chmod +x deploy-and-test-chaincode.sh
+./deploy-and-test-chaincode.sh
+
+
+
+
+

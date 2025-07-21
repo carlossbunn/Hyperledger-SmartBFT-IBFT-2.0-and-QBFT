@@ -1,0 +1,20 @@
+Parte 1:
+rodar docker-compose dos CA
+docker-compose -f docker-compose-ca.yaml up -d
+
+Parte 2:
+rodar setup-fabric-ca.sh:
+chmod +x setup-fabric-ca.sh
+./setup-fabric-ca.sh
+
+Organizar o Fabric CA com o registro dos orderOrg enroll do bootstrap.
+
+Parte 3:
+Configuração nós Peers e Orderers
+    Geração de Configtx.yaml e consenters
+    Criação do genesis block
+
+rodar setup-bft-config.sh
+
+
+

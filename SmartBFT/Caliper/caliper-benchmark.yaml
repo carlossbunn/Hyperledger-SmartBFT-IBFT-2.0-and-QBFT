@@ -1,0 +1,71 @@
+test:
+  name: Fabric SmartBFT Benchmark
+  description: Teste de desempenho do Hyperledger Fabric com SmartBFT (Throughput, Latência e Payload)
+
+  workers:
+    type: local
+    number: 2
+
+  rounds:
+    - label: throughput-test
+      description: Teste de Throughput (TPS)
+      txNumber: 500
+      rateControl:
+        type: fixed-rate
+        opts:
+          tps: 50
+      workload:
+        module: benchmarks/scenario/simple-asset.js
+        arguments:
+          contractId: basic
+          chaincodeFunction: CreateAsset
+          assets:
+            number: 500
+            size: 256
+
+    - label: latency-test
+      description: Teste de Latência
+      txNumber: 200
+      rateControl:
+        type: fixed-load
+        opts:
+          startingTps: 1
+      workload:
+        module: benchmarks/scenario/simple-asset.js
+        arguments:
+          contractId: basic
+          chaincodeFunction: TransferAsset
+          assets:
+            number: 200
+            size: 128
+
+    - label: payload-variation-test
+      description: Teste com diferentes tamanhos de payload
+      txNumber: 300
+      rateControl:
+        type: fixed-rate
+        opts:
+          tps: 30
+      workload:
+        module: benchmarks/scenario/simple-asset.js
+        arguments:
+          contractId: basic
+          chaincodeFunction: CreateAsset
+          assets:
+            number: 300
+            size: 1024   # Payload de 1 KB para estressar a rede
+
+---
+monitors:
+  resource:
+    - module: docker
+      options:
+        interval: 1
+        containers:
+          - all
+
+report:
+  formats:
+    - html
+    - json
+

@@ -1,0 +1,21 @@
+
+data-path="/usr/app/data" # Path
+
+rpc-http-enabled=true
+rpc-http-api=["ETH","NET","WEB3","IBFT","QBFT"]
+
+rpc-http-cors-origins=["all"]
+rpc-http-port=8000
+
+host-allowlist=["*"]
+
+p2p-host="172.25.0.2"
+p2p-port=30300
+
+Xdns-enabled=true
+node-private-key-file="/usr/app/data/key"
+metrics-port=9545
+
+genesis-file="/usr/app/genesis.json" 
+
+metrics-enabled=true

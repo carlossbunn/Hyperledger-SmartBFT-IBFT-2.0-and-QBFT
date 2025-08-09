@@ -1,0 +1,25 @@
+data-path="/usr/app/data"
+
+
+
+rpc-http-enabled=true
+rpc-http-api=["ETH", "NET", "IBFT","QBFT"]
+rpc-http-port=8003
+nat-method="DOCKER"
+
+
+p2p-host="172.25.0.5"
+p2p-port=30303
+
+
+
+
+host-allowlist=["*"]
+
+rpc-http-cors-origins=["all"]
+
+Xdns-enabled=true
+node-private-key-file="/usr/app/data/key"
+genesis-file="/usr/app/genesis.json"
+
+min-gas-price=0

@@ -1,0 +1,15 @@
+{
+  "caliper": {
+    "blockchain": "ethereum"
+  },
+  "ethereum": {
+    "url": "http\ws",
+    "contractDeployerAddress": "<Address hex>",
+    "contractDeployerAddressPrivateKey": "<chaveprivada_HEX>",
+    "fromAddress": "<Address hex origem>",
+    "fromAddressPrivateKey": "<chaveprivada_HEX>",
+    "transactionConfirmationBlocks": 1,
+    "contracts": {}
+  }
+}
+

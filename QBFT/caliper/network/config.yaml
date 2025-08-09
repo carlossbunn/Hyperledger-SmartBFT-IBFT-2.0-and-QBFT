@@ -1,0 +1,31 @@
+test:
+  name: eth-transfers
+  description: Medir desempenho de transferências básicas de Ether na rede Besu IBFT.
+  workers:
+    number: 1        # número de processos de workload do Caliper (pode aumentar para gerar mais carga paralela)
+  rounds:
+    - label: 100tx_10tps
+      description: 100 transferências de ETH a 10 TPS.
+      txNumber: 100           # total de transações no round
+      rateControl:
+        type: fixed-load
+        opts:
+          tps: 10            # taxa fixa de 10 transações por segundo
+      workload:
+        module: /Tester/transferEth.js   # caminho do módulo de workload
+        arguments:
+          toAccount: "<Address hex>"
+          valueEther: "0.001"
+    - label: 500tx_50tps
+      description: 500 transferências .
+      txNumber: 500
+      rateControl:
+        type: fixed-load
+        opts:
+          tps: 50
+      workload:
+        module: benchmarks/scenario/simple/transferEth.js
+        arguments:
+          toAccount: "<Address hex>"
+          valueEther: "0.001"
+
